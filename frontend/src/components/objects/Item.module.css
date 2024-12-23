@@ -1,0 +1,62 @@
+& .Item {
+  position: relative;
+  border: 1px solid var(--gray-7);
+  width: 150px;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent-a11);
+  & .ItemMenu {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 4px;
+    list-style: none;
+    visibility: hidden;
+    position: absolute;
+    z-index: 1;
+    display: flex;
+    gap: 4px;
+  }
+  & .FileButton {
+    all: unset;
+    width: 150px;
+    height: 150px;
+    &:hover {
+      cursor: pointer;
+    }
+    & img {
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+    }
+    &:active {
+      color: pink;
+    }
+  }
+  & .FolderButton {
+    all: unset;
+    &:hover {
+      text-decoration-color: color-mix(
+        in oklab,
+        var(--accent-a5),
+        var(--gray-a6)
+      );
+      text-decoration-line: underline;
+      text-decoration-style: solid;
+      text-decoration-thickness: min(2px, max(1px, 0.05em));
+      text-underline-offset: calc(0.025em + 2px);
+      cursor: pointer;
+    }
+    &:active {
+      color: pink;
+    }
+  }
+
+  &:hover {
+    & .ItemMenu {
+      visibility: visible;
+    }
+  }
+}

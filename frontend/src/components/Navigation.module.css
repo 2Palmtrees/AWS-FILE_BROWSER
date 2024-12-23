@@ -1,0 +1,35 @@
+.crumbs {
+  & ol {
+    list-style-type: none;
+    padding-left: 0;
+    display: flex;
+    & .crumb {
+      color: var(--accent-a11);
+      & button {
+        all: unset;
+        &:hover {
+          text-decoration-color: color-mix(
+            in oklab,
+            var(--accent-a5),
+            var(--gray-a6)
+          );
+          text-decoration-line:underline;
+          text-decoration-style: solid;
+          text-decoration-thickness: min(2px, max(1px, 0.05em));
+          text-underline-offset: calc(0.025em + 2px);
+          cursor: pointer;
+        }
+        &:active {
+          color: pink;
+        }
+        &::after {
+          display: inline-block;
+          color: var(--accent-12);
+          content: '>';
+          /* font-weight: bold; */
+          padding: 0 0.75rem;
+        }
+      }
+    }
+  }
+}

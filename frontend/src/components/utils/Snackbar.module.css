@@ -1,0 +1,48 @@
+/* The snackbar - position it at the bottom and in the middle of the screen */
+.Snackbar {
+  visibility: hidden;
+  /* opacity: 0;
+  transition: visibility 0s 0.5s, opacity 0.5s linear; */
+  min-width: 250px;
+  margin-left: -125px;
+  background-color: black;
+  color: white;
+  text-align: center;
+  border-radius: 6px;
+  padding: 16px;
+  position: fixed;
+  z-index: 1;
+  left: 50%;
+  bottom: 30px;
+  &.Show {
+    visibility: visible;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    /* opacity: 1;
+    transition: opacity 0.5s linear; */
+  }
+  &.Error {
+    background-color: var(--danger-9);
+  }
+}
+
+@keyframes fadein {
+  from {
+    bottom: 0;
+    opacity: 0;
+  }
+  to {
+    bottom: 30px;
+    opacity: 1;
+  }
+}
+
+@keyframes fadeout {
+  from {
+    bottom: 30px;
+    opacity: 1;
+  }
+  to {
+    bottom: 0;
+    opacity: 0;
+  }
+}

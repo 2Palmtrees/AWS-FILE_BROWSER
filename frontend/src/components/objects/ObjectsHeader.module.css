@@ -1,0 +1,15 @@
+.Header {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  & h2 {
+    font-weight: 300;
+    font-size: small;
+  }
+  & menu {
+    display: flex;
+    gap: 0.5rem;
+    list-style: none;
+    align-items: center;
+  }
+}

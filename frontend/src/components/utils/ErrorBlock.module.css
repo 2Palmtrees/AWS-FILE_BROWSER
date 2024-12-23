@@ -1,0 +1,12 @@
+.Error {
+  & h2 {
+    color: var(--danger-11);
+  }
+  & .Actions {
+    display: flex;
+    justify-content: end;
+    & button {
+      /* background-color: var(--danger-9); */
+    }
+  }
+}

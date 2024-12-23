@@ -1,0 +1,17 @@
+.Fieldset {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+  & input {
+    &[hidden] {
+      display: none;
+    }
+  }
+  & .Preview {
+    display: flex;
+    gap: 2rem;
+  }
+  & .ErrorText {
+    color: var(--danger-11);
+  }
+}

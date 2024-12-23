@@ -1,0 +1,37 @@
+& .Tooltip {
+  position: relative;
+  display: inline-block;
+  & span {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    font-size: small;
+    padding: 4px 0;
+    border-radius: 6px;
+
+    /* Position the tooltip text - Top */
+    position: absolute;
+    z-index: 1;
+    width: 120px;
+    bottom: 120%;
+    left: 50%;
+    margin-left: -60px; /* Use half of the width (120/2 = 60), to center the tooltip */
+    &::after {
+      content: ' ';
+      position: absolute;
+      top: 100%; /* At the bottom of the tooltip */
+      left: 50%;
+      margin-left: -4px;
+      border-width: 4px;
+      border-style: solid;
+      border-color: black transparent transparent transparent;
+    }
+  }
+  &:hover {
+    & span {
+      visibility: visible;
+    }
+  }
+}
