@@ -19,11 +19,10 @@ export const getAllObjects = async (req, res, next) => {
     }
 
     //filter folders and add construct names
-    const folderObjects = subFolders.map((folder, i) => {
+    const folderObjects = subFolders.map((folder) => {
       let name = folder.Prefix.slice(0, -1);
       let folderName = folder.Prefix.slice(name.lastIndexOf('/') + 1, -1);
       return {
-        id: i,
         folderName: folderName,
         key: folder.Prefix
       }
@@ -32,7 +31,6 @@ export const getAllObjects = async (req, res, next) => {
     const filteredFiles = files.filter(object => !object.Key.endsWith('/'))
     const fileObjects = filteredFiles.map(object => {
       return {
-        id: object.ETag,
         url: s3bucketUrl + object.Key,
         key: object.Key
       }
@@ -75,13 +73,12 @@ export const uploadObject = async (req, res, next) => {
 
           const { data, info } = await sharp(req.file.buffer)
             .rotate()
-            .resize({ width: 1920, height: 1920, withoutEnlargement: true })
+            .resize(1920, 1920, { fit: 'inside', withoutEnlargement: true })
             .jpeg()
             .toBuffer({ resolveWithObject: true })
           let key = req.body.prefix + uniqueSuffix + '.jpg'
           const response = await s3uploadFile({ key, body: data.buffer })
           const newObject = {
-            id: response.ETag,
             url: s3bucketUrl + key,
             key
           }
@@ -99,7 +96,7 @@ export const uploadObject = async (req, res, next) => {
             let key = req.body.prefix + uniqueSuffix + '-' + element.name + '.jpg'
             const { data, info } = await sharp(req.file.buffer)
               .rotate()
-              .resize({ width: element.size, height: element.size, withoutEnlargement: true })
+              .resize(element.size, element.size, { fit: 'inside', withoutEnlargement: true })
               .jpeg()
               .toBuffer({ resolveWithObject: true })
             const response = await s3uploadFile({ key, body: data.buffer })
@@ -132,7 +129,6 @@ export const uploadObject = async (req, res, next) => {
           }
           const response = await s3uploadFile({ key })
           const newObject = {
-            id: response.ETag,
             folderName,
             key
           }

@@ -7,7 +7,7 @@ export default function List({ items }) {
   return (
     <ul className={styles.List}>
       {items.map((item) => (
-        <Item key={item.id} item={item} />
+        <Item key={item.key} item={item} />
       ))}
     </ul>
   );
